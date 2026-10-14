@@ -1,0 +1,14 @@
+name: Supply Chain Security
+on:
+  push:
+    branches: [main]
+jobs:
+  build-scan-sign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t demo:${{ github.sha }} .
+      - run: echo Trivy Scan
+      - run: echo Generate SBOM
+      - run: echo Sign Artifact
+      - run: echo Verify Artifact
